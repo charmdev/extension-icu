@@ -1,0 +1,7 @@
+**/*/obj
+**/*/bin
+.vscode
+bin
+default.profraw
+lib/
+ndll/

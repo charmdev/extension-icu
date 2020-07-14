@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+	
+	<meta title="IcuSample" package="org.haxe.nme.nmml.icu" version="1.0.0" company="NME" />
+	<app main="Main" path="bin" file="IcuSample" />
+	
+	<window width="800" height="600" fps="60" unless="mobile" />
+	<window fullscreen="true" fps="60" if="mobile" />
+	<window orientation="landscape" vsync="false" antialiasing="0" />
+	
+	<source path="source" />
+	
+	<haxelib name="nme" />
+	<haxelib name="extension-icu" />
+	
+	<section if="android">
+		<haxelib name="extension-android-support-v4" />
+		<android target-sdk-version="19" minimum-sdk-version="19" gradle-version="5.4.1" build-tools-version="28.0.2" />
+	</section>
+	
+</project>

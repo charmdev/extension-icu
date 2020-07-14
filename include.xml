@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+	<ndll name="extension-icu" />
+    <assets path="assets/icudata/icudt67l.dat" rename="icudata/icudt67l.dat" />
+    <classpath name="source" />
+    <haxedef name="HXCPP_CPP11" />
+</project>

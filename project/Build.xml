@@ -1,0 +1,47 @@
+<xml>
+    <set name="HXCPP_CLANG" value="1" />
+    <cppflag value="-std=c++11"/>
+    <flag value="-stdlib=libc++" />
+
+    <include name="${HXCPP}/build-tool/BuildCommon.xml" />
+    <set name="native_toolkit_sdl_static" value="1" if="static_link" />
+
+    <!-- when building from native-toolkit path, it should be relative to allow for the lib name -->
+    <set name="NATIVE_TOOLKIT_PATH" value="." />
+    <set name="OUT_DIR" value="lib" />
+
+    <!-- lib values -->
+    <set name="LIBNAME" value="extension-icu" />
+    <set name="SLIBEXT" value=".lib" if="windows" />
+    <set name="SLIBEXT" value=".a" unless="windows" />
+    <set name="SHLIBEXT" value=".dll" if="windows" />
+    <set name="SHLIBEXT" value=".so" unless="windows" />
+    <set name="SHLIBEXT" value=".dylib" if="mac || ios || tvos" />
+    <set name="DEBUGEXTRA" value="" />
+
+    <include name="${NATIVE_TOOLKIT_PATH}/files.xml" />
+
+    <files id="cffi">
+        <compilerflag value="-I${NATIVE_TOOLKIT_PATH}/cffi" />
+        <compilerflag value="-I${NATIVE_TOOLKIT_PATH}/common" />
+        <file name='${NATIVE_TOOLKIT_PATH}/cffi/ExternalInterface.cpp' />
+    </files>
+
+
+    <target id="NDLL" output="${LIBPREFIX}${LIBNAME}${DEBUGEXTRA}" tool="linker" toolid="${STD_MODULE_LINK}">
+		
+		<outdir name="../ndll/${BINDIR}"/>
+        <!-- make sure it lands in lib/Windows or lib/Mac64 etc -->
+		<ext value=".ndll" if="windows || macos || mac || linux" />
+		
+        <files id="cffi" />
+		<files id="common" />
+		
+	</target>
+	
+
+    <target id="default">
+        <target id="NDLL" />
+    </target>
+
+</xml>
