@@ -9,6 +9,7 @@
         <compilerflag value="-DU_STATIC_IMPLEMENTATION=1" />
         <compilerflag value="-DICU_NO_USER_DATA_OVERRIDE=1" />
         <compilerflag value='-DICU_DATA_DIR="icudata"' />
+        <!--<compilerflag value='-DUDATA_DEBUG=1' />-->
         
         <file name="${NATIVE_TOOLKIT_PATH}/stubdata/stubdata.cpp" />
 

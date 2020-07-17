@@ -17,7 +17,8 @@
     <set name="SHLIBEXT" value=".dll" if="windows" />
     <set name="SHLIBEXT" value=".so" unless="windows" />
     <set name="SHLIBEXT" value=".dylib" if="mac || ios || tvos" />
-    <set name="DEBUGEXTRA" value="" />
+    <set name="DEBUGEXTRA" value="" if="windows" />
+    <set name="LIBEXTRA" value="" if="windows" />
 
     <include name="${NATIVE_TOOLKIT_PATH}/files.xml" />
 
@@ -28,7 +29,7 @@
     </files>
 
 
-    <target id="NDLL" output="${LIBPREFIX}${LIBNAME}${DEBUGEXTRA}" tool="linker" toolid="${STD_MODULE_LINK}">
+    <target id="NDLL" output="${LIBPREFIX}${LIBNAME}${DEBUGEXTRA}${LIBEXTRA}" tool="linker" toolid="${STD_MODULE_LINK}">
 		
 		<outdir name="../ndll/${BINDIR}"/>
         <!-- make sure it lands in lib/Windows or lib/Mac64 etc -->
