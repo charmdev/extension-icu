@@ -16,8 +16,6 @@ static bool initialized = false;
 
 static void nme_icu_init()
 {
-	printf("nme_icu_init\n");
-	
 	return;
 	
 	if (!initialized)
