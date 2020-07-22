@@ -11,6 +11,17 @@
         <compilerflag value='-DICU_DATA_DIR="icudata"' />
         <!--<compilerflag value='-DUDATA_DEBUG=1' />-->
         
+        <!-- platform specific flags. see https://gist.github.com/DanielSerdyukov/188d47e29150622352f1 -->
+		<compilerflag value='-march=armv7-a' if="HXCPP_ARMV7" />
+		<compilerflag value='-mfloat-abi=softfp' if="HXCPP_ARMV7" />
+		<compilerflag value='-mfpu=neon' if="HXCPP_ARMV7" />
+		
+		<compilerflag value='-march=i686' if="HXCPP_X86" />
+		<compilerflag value='-mtune=intel' if="HXCPP_X86" />
+		<compilerflag value='-mssse3' if="HXCPP_X86" />
+		<compilerflag value='-mfpmath=sse' if="HXCPP_X86" />
+		<compilerflag value='-m32' if="HXCPP_X86" />
+        
         <file name="${NATIVE_TOOLKIT_PATH}/stubdata/stubdata.cpp" />
 
         <file name="${NATIVE_TOOLKIT_PATH}/common/errorcode.cpp" />
